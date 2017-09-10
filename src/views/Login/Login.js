@@ -1,5 +1,9 @@
+//Dependencies
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './Login.css'
+
+// Ant Disign
 import {Form, Icon, Input, Button, Checkbox} from 'antd';
 
 const FormItem = Form.Item;
@@ -49,11 +53,12 @@ class Login extends Component {
                         })(
                             <Checkbox>Remember me</Checkbox>
                         )}
-                        <a className="login-form-forgot" href="">Forgot password</a>
+                        <a className="login-form-forgot">Forgot password</a>
+                        
                         <Button type="primary" htmlType="submit" className="login-form-button">
                             Log in
                         </Button>
-                        Or <a href="">register now!</a>
+                        Or <Link to="/register"><a>register now!</a></Link>
                     </FormItem>
                 </Form>
             </div>
