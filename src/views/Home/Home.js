@@ -5,6 +5,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { Header, Sider, Content, Footer } = Layout;
 const SubMenu = Menu.SubMenu;
 
+
 class Home extends Component {
 	state = {
   		collapsed: false,
@@ -62,6 +63,19 @@ class Home extends Component {
 				              	type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
 				              	onClick={this.toggle}
 				            />
+
+				            <Menu mode="horizontal" onClick={{}}>
+					            <SubMenu
+					                style={{
+					                  float: 'right',
+					                }}
+					                title={<span><Icon type="user" /></span>}
+					            >
+				                <Menu.Item key="logout">
+				                  	Sign out
+				                </Menu.Item>
+				              </SubMenu>
+				            </Menu>
 			          	</Header>
 
 			          	<Content style={{ margin: '0 16px' }}>
