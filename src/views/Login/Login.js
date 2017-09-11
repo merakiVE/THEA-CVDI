@@ -28,8 +28,8 @@ class Login extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <Form onSubmit={this.handleSubmit} className="login-form">
-                    <h3 className="login-tittle">Log In</h3>
+                <Form style={{margin:'0 auto'}} onSubmit={this.handleSubmit} className="login-form">
+                    <h3 className="login-title">Log In</h3>
                     <br/>
                     <FormItem>
                         {getFieldDecorator('userName', {
@@ -66,6 +66,6 @@ class Login extends Component {
     }
 }
 
-const WrappedNormalLoginForm = Form.create()(Login);
+const LoginForm = Form.create()(Login);
 
-export default WrappedNormalLoginForm;
+export default LoginForm;

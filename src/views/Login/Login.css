@@ -1,11 +1,8 @@
-.login{
-    margin-left:38%;
-}
-.login-tittle{
+.login-title{
     text-align: center;
 }
 .login-form {
-    max-width: 350px;
+    max-width: 400px;
 }
 .login-form-forgot {
     float: right;
