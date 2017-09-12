@@ -115,7 +115,7 @@ class Home extends Component {
                 <Layout>
                     <Header style={{ background: '#fff', padding: 0 }}>
                         <Row type="flex" justify="end" align="middle">
-                            <Col span={16}>
+                            <Col span={18}>
                                 <Icon
                                     className="trigger"
                                     type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
@@ -130,7 +130,7 @@ class Home extends Component {
                                     </Link>
                                 </Badge>
                             </Col>
-                            <Col span={3}>
+                            <Col span={2}>
                                 <Popover content={content} title="Notification" trigger="click">
                                     <Badge className="header-icon" dot>
                                         <a href="/">
