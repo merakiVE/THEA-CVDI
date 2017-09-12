@@ -1,34 +1,50 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+//Dependencies
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import { Link , NavLink, Switch, Route, Redirect} from 'react-router-dom';
 import './Home.css';
 
+//Components
+import NewProcedure from '../../components/Procedures/NewProcedure';
+import Processed from '../../components/Procedures/Processed';
+import Record from '../../components/Procedures/Record';
+import Dashboard from '../../components/Dashboard/Dashboard';
 
-import {Popover, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar} from 'antd';
+//NProgress
+import NProgress from 'nprogress'
 
-const {Header, Sider, Content, Footer} = Layout;
+//Ant Disign
+import { Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
+
+const { Header, Sider, Content, Footer} = Layout;
+const SubMenu = Menu.SubMenu;
 
 const content = (
     <div>
-        <a href="/"><p>Notification 1</p></a>
-        <a href="/"><p>Notification 2</p></a>
-        <a href="/"><p>Notification 3</p></a>
+        <a href="#"><p>Notification 1</p></a>
+        <a href="#"><p>Notification 2</p></a>
+        <a href="#"><p>Notification 3</p></a>
     </div>
 );
 
 class Home extends Component {
     constructor() {
         super();
-    }
 
-    state = {
-        collapsed: false,
-    };
+        this.state = {
+            collapsed: false,
+        }
+    }
 
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
         });
     }
+
+    handleTouchItems = () => {
+        NProgress.start()
+    };
 
 
     render() {
@@ -55,29 +71,44 @@ class Home extends Component {
                 <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
                     <div className="logo"/>
 
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.handleTouchItems}>                
                         <Menu.Item key="1">
-                            <Icon type="layout"/>
-                            <span>Mis tramites</span>
+                            <NavLink to={'/home'} className="nav-link" activeClassName="active">
+                                <Icon type="home" />
+                                <span>Dashboad</span>
+                            </NavLink>
                         </Menu.Item>
 
-                        <Menu.Item key="2">
-                            <Link to="/historial">
-                                <Icon type="desktop"/>
-                                <span>Historial</span>
-                            </Link>
-                        </Menu.Item>
+                        <SubMenu key="sub1" title={<span><Icon type="layout"/><span>Procedures</span></span>}>
+                            <Menu.Item key="2">
+                                <NavLink to={'/home/procedures/new'} className="nav-link" activeClassName="active">
+                                    <Icon type="edit" />
+                                    New
+                                </NavLink>
+                            </Menu.Item>
 
-                        <Menu.Item key="9">
-                            <Icon type="setting"/>
-                            <span>Ajustes</span>
-                        </Menu.Item>
+                            <Menu.Item key="3">
+                                <NavLink to={'/home/procedures/processed'} className="nav-link" activeClassName="active">
+                                    <Icon type="check-square-o" />
+                                    Processed
+                                </NavLink>
+                            </Menu.Item>
+
+                            <Menu.Item key="4">
+                                <NavLink to={'/home/procedures/record'} className="nav-link" activeClassName="active">
+                                      <Icon type="bar-chart" />
+                                      <span>Record</span>
+                                </NavLink>
+                            </Menu.Item>
+
+                        </SubMenu>
+
+
                     </Menu>
                 </Sider>
 
                 <Layout>
-                    <Header style={{background: '#fff', padding: 0}}>
+                    <Header style={{ background: '#fff', padding: 0 }}>
                         <Row type="flex" justify="end" align="middle">
                             <Col span={16}>
                                 <Icon
@@ -97,8 +128,8 @@ class Home extends Component {
                             <Col span={3}>
                                 <Popover content={content} title="Notification" trigger="click">
                                     <Badge className="header-icon" dot>
-                                        <a href="">
-                                            <Icon type="notification"/>
+                                        <a href="#">
+                                            <Icon type="notification" />
                                         </a>
                                     </Badge>
                                 </Popover>
@@ -106,7 +137,7 @@ class Home extends Component {
                             <Col span={2}>
                                 <Dropdown overlay={menu}>
                                     <a className="ant-dropdown-link" title="UserNAme">
-                                        <Avatar style={{verticalAlign: 'middle'}}>UserNAme</Avatar> <Icon type="down"/>
+                                        <Avatar style={{ verticalAlign: 'middle'}}>UserNAme</Avatar> <Icon type="down" />
                                     </a>
                                 </Dropdown>
                             </Col>
@@ -120,7 +151,13 @@ class Home extends Component {
                         </Breadcrumb>
 
                         <div style={{padding: 24, background: '#fff', minHeight: 360}}>
-                            Bill is a cat.
+                            <Switch>
+                                <Route path='/home/procedures/new' name="Datos Personales" component={NewProcedure}/>
+                                <Route path='/home/procedures/processed' name="Procedure Processed" component={Processed}/>
+                                <Route path='/home/procedures/record' name="Record" component={Record}/>
+                                <Route path='/home' name="Dashboard" component={Dashboard}/>
+                                <Redirect from="/" to="/home"/>
+                            </Switch> 
                         </div>
                     </Content>
 
