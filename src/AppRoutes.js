@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
+
 import { createBrowserHistory } from 'history';
 
 //Components
@@ -17,14 +19,14 @@ export default class AppRoutes extends Component{
 	render(){
 		return(
 			<App>
-				<HashRouter history={history}>
+				<Router history={history}>
 					<Switch>
 						<Route exact path='/' name="Index" component={Index}/>
-						<Route exact path='/home' name="Home" component={Home}/>
 						<Route exact path='/login' name="Home" component={Login}/>
 						<Route exact path='/register' name="Home" component={Register}/>
+						<Route path='/home' name="Home" component={Home}/>
 					</Switch>
-				</HashRouter>
+				</Router>
 			</App>
 
 		);
