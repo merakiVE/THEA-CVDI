@@ -1,1 +1,17 @@
 @import '~antd/dist/antd.css';
+@import '~nprogress/nprogress.css';
+
+#nprogress .bar {
+  background: ##29d; 
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d; 
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #29d;
+  border-left-color: #29d; 
+}
+
+
