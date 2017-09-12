@@ -1,102 +1,136 @@
-import React, { Component } from 'react';
-import './home.css';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom';
+import './Home.css';
 
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-const { Header, Sider, Content, Footer } = Layout;
+
+import {Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
+
+const {Header, Sider, Content, Footer} = Layout;
 const SubMenu = Menu.SubMenu;
 
+const content = (
+    <div>
+        <a href="#"><p>Notification 1</p></a>
+        <a href="#"><p>Notification 2</p></a>
+        <a href="#"><p>Notification 3</p></a>
+    </div>
+);
 
 class Home extends Component {
-	state = {
-  		collapsed: false,
-	};
+    constructor (){
+        super ();
+    }
+    state = {
+        collapsed: false,
+    };
 
-	toggle = () => {
-	  	this.setState({
-	    		collapsed: !this.state.collapsed,
-	  	});
-	}
+    toggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
+    }
 
-  	render() {
-	    return (
-		      	<Layout style={{ minHeight: '100vh' }}>
-			        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-			        	<div className="logo" />
 
-				        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-				            
-				            <Menu.Item key="1">
-				              	<Icon type="pie-chart" />
-				              	<span>Option 1</span>
-				            </Menu.Item>
+    render() {
+        const menu = (
+            <Menu>
+                <Menu.Item>
+                    <Link to="/">
+                        Setting
+                    </Link>
+                </Menu.Item>
+                <Menu.Item>
+                    Change Theme
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/login">
+                        Sing Up!
+                    </Link>
+                </Menu.Item>
+            </Menu>
+        );
 
-				            <Menu.Item key="2">
-				              	<Icon type="desktop" />
-				              	<span>Option 2</span>
-				            </Menu.Item>
+        return (
+            <Layout style={{minHeight: '100vh'}}>
+                <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+                    <div className="logo"/>
 
-				            <SubMenu key="sub1" title={<span><Icon type="user" /><span>User</span></span>}>
-				              	<Menu.Item key="3">Tom</Menu.Item>
-				              	<Menu.Item key="4">Bill</Menu.Item>
-				              	<Menu.Item key="5">Alex</Menu.Item>
-				            </SubMenu>
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
 
-				            <SubMenu
-				              	key="sub2"
-				              	title={<span><Icon type="team" /><span>Team</span></span>}
-				            >
-				              	<Menu.Item key="6">Team 1</Menu.Item>
-				              	<Menu.Item key="8">Team 2</Menu.Item>
-				            </SubMenu>
+                        <Menu.Item key="1">
+                            <Icon type="layout"/>
+                            <span>Mis tramites</span>
+                        </Menu.Item>
 
-				            <Menu.Item key="9">
-				              	<Icon type="file" />
-				              	<span>File</span>
-				            </Menu.Item>
-				        </Menu>
-		        	</Sider>
+                        <Menu.Item key="2">
+                            <Icon type="desktop"/>
+                            <span>Historial</span>
+                        </Menu.Item>
 
-			        <Layout>
-			          	<Header style={{ background: '#fff', padding: 0 }}>
-				            <Icon
-				              	className="trigger"
-				              	type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-				              	onClick={this.toggle}
-				            />
+                        <Menu.Item key="9">
+                            <Icon type="setting"/>
+                            <span>Ajustes</span>
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
 
-				            <Menu mode="horizontal" onClick={{}}>
-					            <SubMenu
-					                style={{
-					                  float: 'right',
-					                }}
-					                title={<span><Icon type="user" /></span>}
-					            >
-				                <Menu.Item key="logout">
-				                  	Sign out
-				                </Menu.Item>
-				              </SubMenu>
-				            </Menu>
-			          	</Header>
+                <Layout>
+                    <Header style={{ background: '#fff', padding: 0 }}>
+                        <Row type="flex" justify="end" align="middle">
+                            <Col span={16}>
+                                <Icon
+                                    className="trigger"
+                                    type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                                    onClick={this.toggle}
+                                />
+                            </Col>
 
-			          	<Content style={{ margin: '0 16px' }}>
-				            <Breadcrumb style={{ margin: '12px 0' }}>
-				              	<Breadcrumb.Item>User</Breadcrumb.Item>
-				              	<Breadcrumb.Item>Bill</Breadcrumb.Item>
-				            </Breadcrumb>
-				            
-				            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-				              	Bill is a cat.
-				            </div>
-			          	</Content>
+                            <Col span={2}>
+                                <Badge className="header-icon" count={8}>
+                                    <Link to="/">
+                                        <Icon type="mail"/>
+                                    </Link>
+                                </Badge>
+                            </Col>
+                            <Col span={3}>
+                                <Popover content={content} title="Notification" trigger="click">
+                                    <Badge className="header-icon" dot>
+                                        <a href="#">
+                                            <Icon type="notification" />
+                                        </a>
+                                    </Badge>
+                                </Popover>
+                            </Col>
+                            <Col span={2}>
+                                <Dropdown overlay={menu}>
+                                    <a className="ant-dropdown-link" title="UserNAme">
+                                        <Avatar style={{ verticalAlign: 'middle'}}>UserNAme</Avatar> <Icon type="down" />
+                                    </a>
+                                </Dropdown>
+                            </Col>
+                        </Row>
+                    </Header>
 
-			          	<Footer style={{ textAlign: 'center' }}>
-			              	Ant Design ©2016 Created by Ant UED
-			            </Footer>
-		        	</Layout>
-	    		</Layout>
-	    	);
-  		}
-	}
+                    <Content style={{margin: '0 16px'}}>
+                        <Breadcrumb style={{margin: '12px 0'}}>
+                            <Breadcrumb.Item>User</Breadcrumb.Item>
+                            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                        </Breadcrumb>
+
+                        <div style={{padding: 24, background: '#fff', minHeight: 360}}>
+                            Bill is a cat.
+                        </div>
+                    </Content>
+
+                    <Footer style={{textAlign: 'center'}}>
+                        Ant Design ©2016 Created by Ant UED
+                    </Footer>
+                </Layout>
+            </Layout>
+        );
+    }
+}
 
 
 export default Home;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete} from 'antd';
+import {Form, Input, Tooltip, Icon, Select, Button, AutoComplete} from 'antd';
 import './Register.css'
 
 const FormItem = Form.Item;
@@ -24,6 +24,7 @@ class Register extends Component {
         const value = e.target.value;
         this.setState({confirmDirty: this.state.confirmDirty || !!value});
     }
+
     checkPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (form.getFieldValue('password') < 4) {
@@ -41,16 +42,6 @@ class Register extends Component {
             form.validateFields(['confirm'], {force: true});
         }
         callback();
-    }
-
-    handleWebsiteChange = (value) => {
-        let autoCompleteResult;
-        if (!value) {
-            autoCompleteResult = [];
-        } else {
-            autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-        }
-        this.setState({autoCompleteResult});
     }
 
     render() {
