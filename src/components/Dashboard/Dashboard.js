@@ -1,23 +1,19 @@
+//Dependencies
 import React, { Component } from 'react';
+
+//NProgress
+import NProgress from 'nprogress'
 
 class Dashboard extends Component {
 
-	constructor() {
-	    super();
-
-	}
-
-	componentWillMount() {
-      
+	componentDidMount(){
+	    NProgress.done()
 	}
 
   	render() {
 	    return (
-
 	        <div>
-
-		        VISTA DASHBOAD
-	           
+		        VISTA DASHBOAD    
 	        </div>
 		
 	    );
