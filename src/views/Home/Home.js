@@ -100,15 +100,6 @@ class Home extends Component {
                                 </NavLink>
                             </Menu.Item>
                         </SubMenu>
-
-                        <Menu.Item key="5">
-                            <NavLink to={'/historial'} className="nav-link" activeClassName="active">
-                                <Icon type="layout" />
-                                <span>Historial</span>
-                            </NavLink>
-                        </Menu.Item>
-
-
                     </Menu>
                 </Sider>
 
