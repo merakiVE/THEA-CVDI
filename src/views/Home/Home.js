@@ -1,7 +1,7 @@
 //Dependencies
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import { Link , NavLink} from 'react-router-dom';
+import { Link , NavLink, Switch, Route, Redirect} from 'react-router-dom';
 import './Home.css';
 
 //Components
@@ -14,9 +14,9 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 import NProgress from 'nprogress'
 
 //Ant Disign
-import {Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
+import { Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
 
-const {Header, Sider, Content, Footer} = Layout;
+const { Header, Sider, Content, Footer} = Layout;
 const SubMenu = Menu.SubMenu;
 
 const content = (
@@ -93,14 +93,16 @@ class Home extends Component {
                                     Processed
                                 </NavLink>
                             </Menu.Item>
+
+                            <Menu.Item key="4">
+                                <NavLink to={'/home/procedures/record'} className="nav-link" activeClassName="active">
+                                      <Icon type="bar-chart" />
+                                      <span>Record</span>
+                                </NavLink>
+                            </Menu.Item>
+
                         </SubMenu>
 
-                        <Menu.Item key="4">
-                            <NavLink to={'/home/procedures/record'} className="nav-link" activeClassName="active">
-                                  <Icon type="bar-chart" />
-                                  <span>Record</span>
-                            </NavLink>
-                        </Menu.Item>
 
                     </Menu>
                 </Sider>
@@ -149,7 +151,13 @@ class Home extends Component {
                         </Breadcrumb>
 
                         <div style={{padding: 24, background: '#fff', minHeight: 360}}>
-                            Bill is a cat.
+                            <Switch>
+                                <Route path='/home/procedures/new' name="Datos Personales" component={NewProcedure}/>
+                                <Route path='/home/procedures/processed' name="Procedure Processed" component={Processed}/>
+                                <Route path='/home/procedures/record' name="Record" component={Record}/>
+                                <Route path='/home' name="Dashboard" component={Dashboard}/>
+                                <Redirect from="/" to="/home"/>
+                            </Switch> 
                         </div>
                     </Content>
 
