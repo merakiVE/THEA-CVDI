@@ -1,6 +1,5 @@
 //Dependencies
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import { Link , NavLink, Switch, Route, Redirect} from 'react-router-dom';
 import './Home.css';
 
@@ -14,16 +13,16 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 import NProgress from 'nprogress'
 
 //Ant Disign
-import { Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
+import { Popover, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
 
 const { Header, Sider, Content, Footer} = Layout;
 const SubMenu = Menu.SubMenu;
 
 const content = (
     <div>
-        <a href="#"><p>Notification 1</p></a>
-        <a href="#"><p>Notification 2</p></a>
-        <a href="#"><p>Notification 3</p></a>
+        <a href="/"><p>Notification 1</p></a>
+        <a href="/"><p>Notification 2</p></a>
+        <a href="/"><p>Notification 3</p></a>
     </div>
 );
 
@@ -71,7 +70,7 @@ class Home extends Component {
                 <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
                     <div className="logo"/>
 
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.handleTouchItems}>                
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.handleTouchItems}>
                         <Menu.Item key="1">
                             <NavLink to={'/home'} className="nav-link" activeClassName="active">
                                 <Icon type="home" />
@@ -100,8 +99,14 @@ class Home extends Component {
                                       <span>Record</span>
                                 </NavLink>
                             </Menu.Item>
-
                         </SubMenu>
+
+                        <Menu.Item key="5">
+                            <NavLink to={'/historial'} className="nav-link" activeClassName="active">
+                                <Icon type="layout" />
+                                <span>Historial</span>
+                            </NavLink>
+                        </Menu.Item>
 
 
                     </Menu>
@@ -128,7 +133,7 @@ class Home extends Component {
                             <Col span={3}>
                                 <Popover content={content} title="Notification" trigger="click">
                                     <Badge className="header-icon" dot>
-                                        <a href="#">
+                                        <a href="/">
                                             <Icon type="notification" />
                                         </a>
                                     </Badge>
