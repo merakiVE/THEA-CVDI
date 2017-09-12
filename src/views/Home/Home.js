@@ -1,9 +1,19 @@
+//Dependencies
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom';
+import { Link , NavLink} from 'react-router-dom';
 import './Home.css';
 
+//Components
+import NewProcedure from '../../components/Procedures/NewProcedure';
+import Processed from '../../components/Procedures/Processed';
+import Record from '../../components/Procedures/Record';
+import Dashboard from '../../components/Dashboard/Dashboard';
 
+//NProgress
+import NProgress from 'nprogress'
+
+//Ant Disign
 import {Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
 
 const {Header, Sider, Content, Footer} = Layout;
@@ -18,18 +28,23 @@ const content = (
 );
 
 class Home extends Component {
-    constructor (){
-        super ();
+    constructor() {
+        super();
+
+        this.state = {
+            collapsed: false,
+        }
     }
-    state = {
-        collapsed: false,
-    };
 
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
         });
     }
+
+    handleTouchItems = () => {
+        NProgress.start()
+    };
 
 
     render() {
@@ -56,22 +71,37 @@ class Home extends Component {
                 <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
                     <div className="logo"/>
 
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.handleTouchItems}>                
                         <Menu.Item key="1">
-                            <Icon type="layout"/>
-                            <span>Mis tramites</span>
+                            <NavLink to={'/home'} className="nav-link" activeClassName="active">
+                                <Icon type="home" />
+                                <span>Dashboad</span>
+                            </NavLink>
                         </Menu.Item>
 
-                        <Menu.Item key="2">
-                            <Icon type="desktop"/>
-                            <span>Historial</span>
+                        <SubMenu key="sub1" title={<span><Icon type="layout"/><span>Procedures</span></span>}>
+                            <Menu.Item key="2">
+                                <NavLink to={'/home/procedures/new'} className="nav-link" activeClassName="active">
+                                    <Icon type="edit" />
+                                    New
+                                </NavLink>
+                            </Menu.Item>
+
+                            <Menu.Item key="3">
+                                <NavLink to={'/home/procedures/processed'} className="nav-link" activeClassName="active">
+                                    <Icon type="check-square-o" />
+                                    Processed
+                                </NavLink>
+                            </Menu.Item>
+                        </SubMenu>
+
+                        <Menu.Item key="4">
+                            <NavLink to={'/home/procedures/record'} className="nav-link" activeClassName="active">
+                                  <Icon type="bar-chart" />
+                                  <span>Record</span>
+                            </NavLink>
                         </Menu.Item>
 
-                        <Menu.Item key="9">
-                            <Icon type="setting"/>
-                            <span>Ajustes</span>
-                        </Menu.Item>
                     </Menu>
                 </Sider>
 
