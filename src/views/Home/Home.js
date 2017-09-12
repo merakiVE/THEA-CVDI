@@ -1,26 +1,25 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom';
 import './Home.css';
 
 
-import {Popover, Button, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
+import {Popover, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar} from 'antd';
 
 const {Header, Sider, Content, Footer} = Layout;
-const SubMenu = Menu.SubMenu;
 
 const content = (
     <div>
-        <a href="#"><p>Notification 1</p></a>
-        <a href="#"><p>Notification 2</p></a>
-        <a href="#"><p>Notification 3</p></a>
+        <a href="/"><p>Notification 1</p></a>
+        <a href="/"><p>Notification 2</p></a>
+        <a href="/"><p>Notification 3</p></a>
     </div>
 );
 
 class Home extends Component {
-    constructor (){
-        super ();
+    constructor() {
+        super();
     }
+
     state = {
         collapsed: false,
     };
@@ -64,8 +63,10 @@ class Home extends Component {
                         </Menu.Item>
 
                         <Menu.Item key="2">
-                            <Icon type="desktop"/>
-                            <span>Historial</span>
+                            <Link to="/historial">
+                                <Icon type="desktop"/>
+                                <span>Historial</span>
+                            </Link>
                         </Menu.Item>
 
                         <Menu.Item key="9">
@@ -76,7 +77,7 @@ class Home extends Component {
                 </Sider>
 
                 <Layout>
-                    <Header style={{ background: '#fff', padding: 0 }}>
+                    <Header style={{background: '#fff', padding: 0}}>
                         <Row type="flex" justify="end" align="middle">
                             <Col span={16}>
                                 <Icon
@@ -96,8 +97,8 @@ class Home extends Component {
                             <Col span={3}>
                                 <Popover content={content} title="Notification" trigger="click">
                                     <Badge className="header-icon" dot>
-                                        <a href="#">
-                                            <Icon type="notification" />
+                                        <a href="">
+                                            <Icon type="notification"/>
                                         </a>
                                     </Badge>
                                 </Popover>
@@ -105,7 +106,7 @@ class Home extends Component {
                             <Col span={2}>
                                 <Dropdown overlay={menu}>
                                     <a className="ant-dropdown-link" title="UserNAme">
-                                        <Avatar style={{ verticalAlign: 'middle'}}>UserNAme</Avatar> <Icon type="down" />
+                                        <Avatar style={{verticalAlign: 'middle'}}>UserNAme</Avatar> <Icon type="down"/>
                                     </a>
                                 </Dropdown>
                             </Col>

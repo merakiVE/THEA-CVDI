@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {Form, Input, Tooltip, Icon, Select, Button, AutoComplete} from 'antd';
+import {Form, Input, Tooltip, Icon, Button} from 'antd';
 import './Register.css'
 
 const FormItem = Form.Item;
-const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
 
 
 class Register extends Component {
@@ -46,7 +44,6 @@ class Register extends Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
-        const {autoCompleteResult} = this.state;
 
         const formItemLayout = {
             labelCol: {
