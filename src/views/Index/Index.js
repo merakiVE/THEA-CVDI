@@ -1,11 +1,10 @@
 //Dependencies
 import React, {Component} from 'react';
-import { Link , NavLink, Switch, Route, Redirect} from 'react-router-dom';
+import { Link , Switch, Route, Redirect} from 'react-router-dom';
 import Button from 'antd/lib/button';
 import {Layout, Row, Col} from 'antd';
 import Login from '../Login/Login';
 //NProgress
-import NProgress from 'nprogress'
 
 //Ant Disign
 import { Menu, Breadcrumb, Badge} from 'antd';
