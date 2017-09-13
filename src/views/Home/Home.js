@@ -1,30 +1,19 @@
 //Dependencies
-import React, { Component } from 'react';
-import { Link , NavLink, Switch, Route, Redirect} from 'react-router-dom';
-import './Home.css';
+import React, {Component} from 'react';
+import { Link, Switch, Route } from 'react-router-dom';
 
 //Components
-import NewProcedure from '../../components/Procedures/NewProcedure';
-import Processed from '../../components/Procedures/Processed';
-import Record from '../../components/Procedures/Record';
-import Dashboard from '../../components/Dashboard/Dashboard';
-
-//NProgress
-import NProgress from 'nprogress'
+import Login from '../../components/Home/Login.js';
+import Register from '../../components/Home/Register.js';
 
 //Ant Disign
-import { Popover, Layout, Menu, Breadcrumb, Icon, Row, Col, Badge, Dropdown, Avatar } from 'antd';
+import { Layout, Row, Col } from 'antd';
+import Button from 'antd/lib/button';
+import { Breadcrumb, Badge} from 'antd';
 
-const { Header, Sider, Content, Footer} = Layout;
-const SubMenu = Menu.SubMenu;
+const {Header, Content, Footer} = Layout;
 
-const content = (
-    <div>
-        <a href="/"><p>Notification 1</p></a>
-        <a href="/"><p>Notification 2</p></a>
-        <a href="/"><p>Notification 3</p></a>
-    </div>
-);
+// Ant Disign
 
 class Home extends Component {
     constructor() {
@@ -35,132 +24,50 @@ class Home extends Component {
         }
     }
 
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-    }
-
-    handleTouchItems = () => {
-        NProgress.start()
-    };
-
-
     render() {
-        const menu = (
-            <Menu>
-                <Menu.Item>
-                    <Link to="/">
-                        Setting
-                    </Link>
-                </Menu.Item>
-                <Menu.Item>
-                    Change Theme
-                </Menu.Item>
-                <Menu.Item>
-                    <Link to="/login">
-                        Logout!
-                    </Link>
-                </Menu.Item>
-            </Menu>
-        );
-
         return (
-            <Layout style={{minHeight: '100vh'}}>
-                <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-                    <div className="logo"/>
-
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" onClick={this.handleTouchItems}>
-                        <Menu.Item key="1">
-                            <NavLink to={'/home'} className="nav-link" activeClassName="active">
-                                <Icon type="home" />
-                                <span>Dashboad</span>
-                            </NavLink>
-                        </Menu.Item>
-
-                        <SubMenu key="sub1" title={<span><Icon type="layout"/><span>Procedures</span></span>}>
-                            <Menu.Item key="2">
-                                <NavLink to={'/home/procedures/new'} className="nav-link" activeClassName="active">
-                                    <Icon type="edit" />
-                                    New
-                                </NavLink>
-                            </Menu.Item>
-
-                            <Menu.Item key="3">
-                                <NavLink to={'/home/procedures/processed'} className="nav-link" activeClassName="active">
-                                    <Icon type="check-square-o" />
-                                    Processed
-                                </NavLink>
-                            </Menu.Item>
-
-                            <Menu.Item key="4">
-                                <NavLink to={'/home/procedures/record'} className="nav-link" activeClassName="active">
-                                      <Icon type="bar-chart" />
-                                      <span>Record</span>
-                                </NavLink>
-                            </Menu.Item>
-                        </SubMenu>
-                    </Menu>
-                </Sider>
-
-                <Layout>
-                    <Header style={{ background: '#fff', padding: 0 }}>
-                        <Row type="flex" justify="end" align="middle">
-                            <Col span={18}>
-                                <Icon
-                                    className="trigger"
-                                    type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                                    onClick={this.toggle}
-                                />
-                            </Col>
-
-                            <Col span={2}>
-                                <Badge className="header-icon" count={8}>
+            <div className="">
+                <Layout style={{minHeight: '100vh'}}>
+                    <Layout>
+                        <Header style={{background: '#665199', padding: 0}}>
+                            <Row type="flex" justify="end" align="middle">
+                                <Col span={17}>
                                     <Link to="/">
-                                        <Icon type="mail"/>
+                                        <Button type="primary" icon="home">Home!</Button>
                                     </Link>
-                                </Badge>
-                            </Col>
-                            <Col span={2}>
-                                <Popover content={content} title="Notification" trigger="click">
-                                    <Badge className="header-icon" dot>
-                                        <a href="/">
-                                            <Icon type="notification" />
-                                        </a>
+                                </Col>
+                                <Col span={3}>
+                                    <Badge className="header-icon">
+                                        <Link to="/login">
+                                            <Button type="primary" icon="login">Sing In!</Button>
+                                        </Link>
                                     </Badge>
-                                </Popover>
-                            </Col>
-                            <Col span={2}>
-                                <Dropdown overlay={menu}>
-                                    <a className="ant-dropdown-link" title="UserNAme">
-                                        <Avatar style={{ verticalAlign: 'middle'}}>UserNAme</Avatar> <Icon type="down" />
-                                    </a>
-                                </Dropdown>
-                            </Col>
-                        </Row>
-                    </Header>
+                                </Col>
+                                <Col span={3}>
+                                    <Link to="/register">
+                                        <Button type="primary" icon="user-add">Register Now!</Button>
+                                    </Link>
+                                </Col>
+                            </Row>
+                        </Header>
+                        <Content style={{margin: '0 16px'}}>
+                            <Breadcrumb style={{margin: '12px 0'}}>
+                            </Breadcrumb>
 
-                    <Content style={{margin: '0 16px'}}>
-                        <Breadcrumb style={{margin: '12px 0'}}>
-                            <Breadcrumb.Item>User</Breadcrumb.Item>
-                            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                        </Breadcrumb>
+                            <div style={{padding: 24, background: '#fff', minHeight: 360}}>
+                                <Switch>
+                                    <Route path='/login' name="Login" component={Login}/>
+                                    <Route path='/register' name="Register" component={Register}/>
+                                </Switch>
+                            </div>
+                        </Content>
 
-                        <div style={{padding: 24, background: '#fff', minHeight: 360}}>
-                            <Switch>
-                                <Route path='/home/procedures/new' name="Datos Personales" component={NewProcedure}/>
-                                <Route path='/home/procedures/processed' name="Procedure Processed" component={Processed}/>
-                                <Route path='/home/procedures/record' name="Record" component={Record}/>
-                                <Route path='/home' name="Dashboard" component={Dashboard}/>
-                            </Switch> 
-                        </div>
-                    </Content>
-
-                    <Footer style={{textAlign: 'center'}}>
-                        Ant Design ©2016 Created by Ant UED
-                    </Footer>
+                        <Footer style={{textAlign: 'center'}}>
+                            Ant Design ©2016 Created by Ant UED
+                        </Footer>
+                    </Layout>
                 </Layout>
-            </Layout>
+            </div>
         );
     }
 }
