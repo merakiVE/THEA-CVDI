@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Form, Input, Tooltip, Icon, Button} from 'antd';
+import {Form, Input, Tooltip, Icon, Select, Button, AutoComplete, Row, Col, Layout, Badge} from 'antd';
+import {Link} from 'react-router-dom';
 import './Register.css'
-
+const {Header} = Layout;
 const FormItem = Form.Item;
+const Option = Select.Option;
 
 
 class Register extends Component {
@@ -44,6 +46,7 @@ class Register extends Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
+        const {autoCompleteResult} = this.state;
 
         const formItemLayout = {
             labelCol: {
@@ -71,6 +74,24 @@ class Register extends Component {
         return (
             <div className="App">
                 <br/>
+                <Layout>
+                    <Header style={{ background: '#fff', padding: 0 }}>
+                        <Row type="flex" justify="end" align="middle">
+                            <Col span={3}>
+                                <Badge className="header-icon">
+                                    <Link to="/login">
+                                        <Button type="primary" icon="login">Sing In!</Button>
+                                    </Link>
+                                </Badge>
+                            </Col>
+                            <Col span={3}>
+                                <Link to="/register">
+                                    <Button type="primary" icon="user-add">Register Now!</Button>
+                                </Link>
+                            </Col>
+                        </Row>
+                    </Header>
+                </Layout>
                 <Form style={{width: '60%', margin: '0 auto'}} onSubmit={this.handleSubmit}>
                     <h3 className="titleForm">Register of User</h3>
                     <br/>
@@ -146,7 +167,14 @@ class Register extends Component {
                     </FormItem>
 
                     <FormItem {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">Register</Button>
+                        <Row type="flex" justify="end" align="middle">
+                            <Col span={10}>
+                                <Button type="primary" htmlType="submit">Register</Button>
+                            </Col>
+                            <Col span={14}>
+                                <Button type="primary" htmlType="submit">Atras</Button>
+                            </Col>
+                        </Row>
                     </FormItem>
                 </Form>
 
