@@ -1,16 +1,16 @@
 //Dependencies
 import React, {Component} from 'react';
-import { Link , Switch, Route, Redirect} from 'react-router-dom';
+import {Link, Switch, Route, Redirect} from 'react-router-dom';
 import Button from 'antd/lib/button';
 import {Layout, Row, Col} from 'antd';
 import Login from '../Login/Login';
+import Register from '../Register/Register';
 //NProgress
 
 //Ant Disign
-import { Menu, Breadcrumb, Badge} from 'antd';
+import { Breadcrumb, Badge} from 'antd';
 
-const {Header, Sider, Content, Footer} = Layout;
-const SubMenu = Menu.SubMenu;
+const {Header, Content, Footer} = Layout;
 
 // Ant Disign
 
@@ -24,22 +24,17 @@ class Index extends Component {
     }
 
     render() {
-        const menu = (
-            <Menu>
-                <Menu.Item>
-                    <Link to="/">
-                        Register
-                    </Link>
-                </Menu.Item>
-            </Menu>
-        );
-
         return (
             <div className="">
                 <Layout style={{minHeight: '100vh'}}>
                     <Layout>
-                        <Header style={{ background: '#665199', padding: 0 }}>
+                        <Header style={{background: '#665199', padding: 0}}>
                             <Row type="flex" justify="end" align="middle">
+                                <Col span={17}>
+                                    <Link to="/">
+                                        <Button type="primary" icon="home">Home!</Button>
+                                    </Link>
+                                </Col>
                                 <Col span={3}>
                                     <Badge className="header-icon">
                                         <Link to="/login">
@@ -61,7 +56,7 @@ class Index extends Component {
                             <div style={{padding: 24, background: '#fff', minHeight: 360}}>
                                 <Switch>
                                     <Route path='/login' name="Login" component={Login}/>
-                                    <Redirect from="/" to="/home"/>
+                                    <Route path='/register' name="Register" component={Register}/>
                                 </Switch>
                             </div>
                         </Content>

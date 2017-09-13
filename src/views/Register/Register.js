@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {Form, Input, Tooltip, Icon, Select, Button, Row, Col, Badge} from 'antd';
-import {Link} from 'react-router-dom';
+import {Form, Input, Tooltip, Icon, Button} from 'antd';
 import './Register.css'
+
 const FormItem = Form.Item;
-const Option = Select.Option;
 
 
 class Register extends Component {
@@ -45,7 +44,6 @@ class Register extends Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
-        const {autoCompleteResult} = this.state;
 
         const formItemLayout = {
             labelCol: {
@@ -147,14 +145,7 @@ class Register extends Component {
                     </FormItem>
 
                     <FormItem {...tailFormItemLayout}>
-                        <Row type="flex" justify="end" align="middle">
-                            <Col span={10}>
-                                <Button type="primary" htmlType="submit">Register</Button>
-                            </Col>
-                            <Col span={14}>
-                                <Button type="primary" htmlType="submit">Atras</Button>
-                            </Col>
-                        </Row>
+                        <Button type="primary" htmlType="submit">Register</Button>
                     </FormItem>
                 </Form>
 

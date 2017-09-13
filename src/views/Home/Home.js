@@ -59,7 +59,7 @@ class Home extends Component {
                 </Menu.Item>
                 <Menu.Item>
                     <Link to="/login">
-                        Sing Up!
+                        Logout!
                     </Link>
                 </Menu.Item>
             </Menu>
@@ -152,7 +152,6 @@ class Home extends Component {
                                 <Route path='/home/procedures/processed' name="Procedure Processed" component={Processed}/>
                                 <Route path='/home/procedures/record' name="Record" component={Record}/>
                                 <Route path='/home' name="Dashboard" component={Dashboard}/>
-                                <Redirect from="/" to="/home"/>
                             </Switch> 
                         </div>
                     </Content>
