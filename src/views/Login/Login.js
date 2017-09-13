@@ -25,9 +25,6 @@ class Login extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <br/>
-                <br/>
-                <br/>
                 <Form style={{margin:'0 auto'}} onSubmit={this.handleSubmit} className="login-form">
                     <h3 className="login-title">Log In</h3>
                     <br/>
