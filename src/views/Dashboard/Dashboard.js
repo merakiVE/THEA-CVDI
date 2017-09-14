@@ -157,7 +157,22 @@ class Dashboard extends Component {
                     </Content>
 
                     <Footer style={{textAlign: 'center'}}>
-                        Ant Design ©2016 Created by Ant UED
+                        <Row gutter={16}>
+                            <Col span={8}>
+                                <strong></strong>
+                            </Col>
+                            <Col span={8}>
+                                <strong>Meraki: </strong> <em> "Hacer algo con el alma, con amor y creatividad,
+                                dejar un
+                                pedazo de si mismo en el trabajo"</em>
+                            </Col>
+                            <Col span={8}>
+                                MerakiVE
+                                <a href="https://github.com/merakiVE">
+                                    <Icon type="github" style={{fontSize: 16, color: '#08c', marginLeft: '5px'}}/>
+                                </a>
+                            </Col>
+                        </Row>
                     </Footer>
                 </Layout>
             </Layout>
