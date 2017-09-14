@@ -1,0 +1,22 @@
+.card-neurons{
+    background-color:#F7A0E7;
+}
+.card-neurons :hover {
+    background-color: #B71F9B;
+}
+
+.card-agent{
+    background-color:#61E244;
+}
+
+.card-agent :hover {
+    background-color: #21A503;
+}
+
+.card-microservice{
+    background-color:#FFD53D;
+}
+
+.card-microservice :hover {
+    background-color: #FFC700;
+}
