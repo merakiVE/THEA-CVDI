@@ -33,7 +33,7 @@ class Home extends Component {
                     <Layout>
                         <Header style={{background: '#146AE2', padding: 0}}>
                             <Row type="flex" justify="end" align="middle">
-                                <Col span={17}>
+                                <Col span={16}>
                                     <Link to="/">
                                         <Button className="btn-home" type="dashed" size="large" icon="home">Home!</Button>
                                     </Link>
@@ -45,7 +45,7 @@ class Home extends Component {
                                         </Link>
                                     </Badge>
                                 </Col>
-                                <Col span={3}>
+                                <Col span={4}>
                                     <Link to="/register">
                                         <Button className="btn-registerNow" type="dashed" size="large" icon="user-add">Register Now!</Button>
                                     </Link>
