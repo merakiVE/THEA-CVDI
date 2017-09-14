@@ -1,15 +1,16 @@
 //Dependencies
 import React, {Component} from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import {Link, Switch, Route} from 'react-router-dom';
 
 //Components
 import Login from '../../components/Home/Login.js';
 import Register from '../../components/Home/Register.js';
+import HomeContent from '../../components/Home/HomeContent.js';
 
 //Ant Disign
-import { Layout, Row, Col } from 'antd';
+import {Layout, Row, Col, Card, Icon} from 'antd';
 import Button from 'antd/lib/button';
-import { Breadcrumb, Badge} from 'antd';
+import {Breadcrumb, Badge} from 'antd';
 
 const {Header, Content, Footer} = Layout;
 
@@ -24,28 +25,29 @@ class Home extends Component {
         }
     }
 
+
     render() {
         return (
             <div className="">
                 <Layout style={{minHeight: '100vh'}}>
                     <Layout>
-                        <Header style={{background: '#665199', padding: 0}}>
+                        <Header style={{background: '#146AE2', padding: 0}}>
                             <Row type="flex" justify="end" align="middle">
                                 <Col span={17}>
                                     <Link to="/">
-                                        <Button type="primary" icon="home">Home!</Button>
+                                        <Button className="btn-home" type="dashed" size="large" icon="home">Home!</Button>
                                     </Link>
                                 </Col>
                                 <Col span={3}>
                                     <Badge className="header-icon">
                                         <Link to="/login">
-                                            <Button type="primary" icon="login">Sing In!</Button>
+                                            <Button className="btn-singIn" type="dashed" size="large" icon="login">Sing In!</Button>
                                         </Link>
                                     </Badge>
                                 </Col>
                                 <Col span={3}>
                                     <Link to="/register">
-                                        <Button type="primary" icon="user-add">Register Now!</Button>
+                                        <Button className="btn-registerNow" type="dashed" size="large" icon="user-add">Register Now!</Button>
                                     </Link>
                                 </Col>
                             </Row>
@@ -58,12 +60,28 @@ class Home extends Component {
                                 <Switch>
                                     <Route path='/login' name="Login" component={Login}/>
                                     <Route path='/register' name="Register" component={Register}/>
+                                    <Route path='/' name="Index" component={HomeContent}/>
                                 </Switch>
                             </div>
                         </Content>
 
                         <Footer style={{textAlign: 'center'}}>
-                            Ant Design ©2016 Created by Ant UED
+                            <Row gutter={16}>
+                                <Col span={8}>
+                                    <strong></strong>
+                                </Col>
+                                <Col span={8}>
+                                    <strong>Meraki: </strong> <em> "Hacer algo con el alma, con amor y creatividad,
+                                    dejar un
+                                    pedazo de si mismo en el trabajo"</em>
+                                </Col>
+                                <Col span={8}>
+                                    MerakiVE
+                                    <a href="https://github.com/merakiVE">
+                                        <Icon type="github" style={{fontSize: 16, color: '#08c', marginLeft: '5px'}}/>
+                                    </a>
+                                </Col>
+                            </Row>
                         </Footer>
                     </Layout>
                 </Layout>
