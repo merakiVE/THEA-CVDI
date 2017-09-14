@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 //Ant Disign
-import {Layout, Row, Col, Card, Icon} from 'antd';
-import Button from 'antd/lib/button';
-import {Breadcrumb, Badge} from 'antd';
+import { Row, Col, Card} from 'antd';
 
 import './HomeContent.css'
 

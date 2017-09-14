@@ -8,7 +8,7 @@ import Register from '../../components/Home/Register.js';
 import HomeContent from '../../components/Home/HomeContent.js';
 
 //Ant Disign
-import {Layout, Row, Col, Card, Icon} from 'antd';
+import {Layout, Row, Col, Icon} from 'antd';
 import Button from 'antd/lib/button';
 import {Breadcrumb, Badge} from 'antd';
 
