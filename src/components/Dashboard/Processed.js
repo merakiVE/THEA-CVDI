@@ -1,6 +1,8 @@
 //Dependencies
 import React, {Component} from 'react';
 import reqwest from 'reqwest';
+import './processed.css';
+
 
 
 //Ant Disign
