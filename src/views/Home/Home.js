@@ -35,19 +35,20 @@ class Home extends Component {
                             <Row type="flex" justify="end" align="middle">
                                 <Col span={16}>
                                     <Link to="/">
-                                        <Button className="btn-home" type="dashed" size="large" icon="home">Home!</Button>
+                                        <Button className="btn-home" type="dashed" size="large"
+                                                icon="home">Home!</Button>
                                     </Link>
                                 </Col>
                                 <Col span={3}>
-                                    <Badge className="header-icon">
-                                        <Link to="/login">
-                                            <Button className="btn-singIn" type="dashed" size="large" icon="login">Sing In!</Button>
-                                        </Link>
-                                    </Badge>
+                                    <Link to="/login">
+                                        <Button className="btn-singIn" type="dashed" size="large" icon="login">Sing
+                                            In!</Button>
+                                    </Link>
                                 </Col>
                                 <Col span={4}>
                                     <Link to="/register">
-                                        <Button className="btn-registerNow" type="dashed" size="large" icon="user-add">Register Now!</Button>
+                                        <Button className="btn-registerNow" type="dashed" size="large" icon="user-add">Register
+                                            Now!</Button>
                                     </Link>
                                 </Col>
                             </Row>
