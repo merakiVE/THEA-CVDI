@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './newProcedure.css';
 
 //Ant Disign
-import { Table, Input, Icon, Button, Popconfirm } from 'antd';
+import { Table, Input, Button, Popconfirm } from 'antd';
 
 //NProgress
 import NProgress from 'nprogress'
