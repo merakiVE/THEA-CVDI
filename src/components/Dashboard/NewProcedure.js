@@ -11,7 +11,7 @@ import NProgress from 'nprogress'
 class EditableCell extends React.Component {
     state = {
         value: this.props.value,
-        editable: this.props.editable || false,
+        editable: false,
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.editable !== this.state.editable) {
@@ -96,6 +96,7 @@ class NewProcedure extends Component {
                           editable ?
                             <span>
                                 <a onClick={() => this.editDone(index, 'save')}>Save</a>
+
                                 <Popconfirm title="Sure to cancel?" onConfirm={() => this.editDone(index, 'cancel')}>
                                     <a>Cancel</a>
                                 </Popconfirm>
@@ -129,9 +130,9 @@ class NewProcedure extends Component {
                 },
                 address: {
                     value: 'London, Park Lane no. 0',
-                },
-                count: 1,
+                }
             }],
+            count: 1,
         };
     }
 
